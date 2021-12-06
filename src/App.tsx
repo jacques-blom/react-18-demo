@@ -1,5 +1,5 @@
 function App() {
-  return <div className="App">This is a React app!</div>;
+  return <div className="text-blue-500">This is a React app!</div>;
 }
 
 export default App;
