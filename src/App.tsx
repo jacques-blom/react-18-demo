@@ -98,9 +98,8 @@ const ConcurrentModeSwitch = () => {
         <Toggle
           checked={isConcurrent()}
           onChange={(value) => {
-            const searchParams = new URLSearchParams(window.location.search);
-            searchParams.set("concurrent", value ? "true" : "false");
-            window.location.search = searchParams.toString();
+            localStorage.setItem("concurrentModeEnabled", value ? "true" : "false");
+            window.location.reload();
           }}
         />
       </div>

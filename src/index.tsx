@@ -5,8 +5,7 @@ import "rsuite/dist/rsuite.min.css";
 import App from "./App";
 
 export const isConcurrent = () => {
-  const searchParams = new URLSearchParams(window.location.search);
-  return searchParams.get("concurrent") !== "false";
+  return localStorage.getItem("concurrentModeEnabled") !== "false";
 };
 
 if (isConcurrent()) {
