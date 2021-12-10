@@ -13,21 +13,33 @@ function App() {
     <BrowserRouter>
       <div className="w-screen h-screen flex">
         <div
-          className="bg-gray-800 text-white p-5 w-full space-y-4"
+          className="bg-gray-800 text-white w-full space-y-4 flex flex-col justify-between"
           style={{ maxWidth: 250 }}
         >
-          <div className="text-2xl font-bold">React 18 Demos</div>
-          <ConcurrentModeSwitch />
-          <Section title="Concurrent Rendering">
-            <MenuItem path="/concurrent/use-deferred-value">useDeferredValue</MenuItem>
-            <MenuItem path="/concurrent/use-transition">useTransition</MenuItem>
-            <MenuItem path="/concurrent/tearing">Tearing</MenuItem>
-          </Section>
-          {/* <Section title="Suspense">
+          <div className="space-y-4 p-5">
+            <div className="text-2xl font-bold">React 18 Demos</div>
+            <ConcurrentModeSwitch />
+            <Section title="Concurrent Rendering">
+              <MenuItem path="/concurrent/use-deferred-value">useDeferredValue</MenuItem>
+              <MenuItem path="/concurrent/use-transition">useTransition</MenuItem>
+              <MenuItem path="/concurrent/tearing">Tearing</MenuItem>
+            </Section>
+            {/* <Section title="Suspense">
             <MenuItem path="/suspense/data-fetching">Data Fetching</MenuItem>
             <MenuItem path="/suspense/use-deferred-value">useDeferredValue</MenuItem>
             <MenuItem path="/suspense/use-transition">useTransition</MenuItem>
           </Section> */}
+          </div>
+          <a
+            href="https://twitter.com/jacques_codes"
+            target="_blank"
+            rel="noreferrer"
+            className="text-white hover:text-white hover:no-underline"
+          >
+            <div className="bg-blue-600 hover:bg-blue-400 transition font-extrabold p-5 cursor-pointer text-center">
+              Made with ❤ by <span className="underline">@jacques_codes</span>
+            </div>
+          </a>
         </div>
         <div className="flex-1 bg-yellow-50 relative">
           <Routes>
@@ -72,24 +84,26 @@ export default App;
 
 const ConcurrentModeSwitch = () => {
   return (
-    <div className="text-white py-3 font-bold flex justify-center items-center w-full space-x-2">
-      <div>Concurrent mode is</div>
-      <span
-        className={clsx(
-          isConcurrent() ? "bg-green-500" : "bg-red-500",
-          "px-2 rounded-full",
-        )}
-      >
-        {isConcurrent() ? "ON" : "OFF"}
-      </span>
-      <Toggle
-        checked={isConcurrent()}
-        onChange={(value) => {
-          const searchParams = new URLSearchParams(window.location.search);
-          searchParams.set("concurrent", value ? "true" : "false");
-          window.location.search = searchParams.toString();
-        }}
-      />
+    <div className="text-white font-bold py-3 text-center bg-white bg-opacity-10 rounded-lg space-y-2">
+      <div>Concurrent mode is...</div>
+      <div className="flex justify-center items-center w-full space-x-2">
+        <span
+          className={clsx(
+            isConcurrent() ? "bg-green-500" : "bg-red-500",
+            "px-2 rounded-full",
+          )}
+        >
+          {isConcurrent() ? "ON" : "OFF"}
+        </span>
+        <Toggle
+          checked={isConcurrent()}
+          onChange={(value) => {
+            const searchParams = new URLSearchParams(window.location.search);
+            searchParams.set("concurrent", value ? "true" : "false");
+            window.location.search = searchParams.toString();
+          }}
+        />
+      </div>
     </div>
   );
 };
