@@ -33,25 +33,25 @@ setInterval(() => {
 }, 50);
 
 // A hook that lets us use the external store in React
-// function useExternalState() {
-//   // Store our state in a useState
-//   const [state, setState] = useState(externalState);
-
-//   // Subscribe to the external store
-//   useEffect(() => {
-//     return subscribe(() => {
-//       setState(externalState);
-//     });
-//   }, []);
-
-//   return state;
-// }
-
-// The way to do it in React 18
 function useExternalState() {
-  const state = useSyncExternalStore(subscribe, () => externalState);
+  // Store our state in a useState
+  const [state, setState] = useState(externalState);
+
+  // Subscribe to the external store
+  useEffect(() => {
+    return subscribe(() => {
+      setState(externalState);
+    });
+  }, []);
+
   return state;
 }
+
+// The way to do it in React 18
+// function useExternalState() {
+//   const state = useSyncExternalStore(subscribe, () => externalState);
+//   return state;
+// }
 
 // function useExternalSelector<SelectedValue>(
 //   selector: (state: ExternalState) => SelectedValue,
