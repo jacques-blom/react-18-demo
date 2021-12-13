@@ -64,7 +64,7 @@ const Controls = ({ onChange }: { onChange: (resolution: number) => void }) => {
   );
 };
 
-const MapPin = () => {
+const MapPin = memo(() => {
   const [positionX] = useState(Math.random() * 100);
   const [positionY] = useState(Math.random() * 100);
 
@@ -77,4 +77,4 @@ const MapPin = () => {
       }}
     />
   );
-};
+});
