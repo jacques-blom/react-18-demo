@@ -45,20 +45,24 @@ const Controls = ({ onChange }: { onChange: (resolution: number) => void }) => {
   const [resolution, setResolution] = useState(0);
 
   return (
-    <div className="absolute text-white inset-x-0 flex items-center bg-black p-3 justify-between space-x-2">
-      <div className="text-lg font-bold flex-1">Change map resolution</div>
-      <div className="font-bold mr text-xl">{resolution}</div>
-      <div className="max-w-xs flex-1">
-        <Slider
-          min={0}
-          max={20}
-          value={resolution}
-          onChange={(value) => {
-            setResolution(value);
-            onChange(value);
-          }}
-          tooltip={false}
-        />
+    <div className="absolute text-white inset-x-0 flex flex-col bg-black p-3 space-x-4 sm:flex-row">
+      <div className="text-lg font-bold flex-1">
+        Enable CPU throttling, and drag the slider, with concurrent rendering on and off
+      </div>
+      <div className="flex items-center justify-center max-w-xs flex-1">
+        <div className="font-bold text-xl">{resolution}</div>
+        <div className="flex-1 ml-4">
+          <Slider
+            min={0}
+            max={20}
+            value={resolution}
+            onChange={(value) => {
+              setResolution(value);
+              onChange(value);
+            }}
+            tooltip={false}
+          />
+        </div>
       </div>
     </div>
   );

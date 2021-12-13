@@ -8,7 +8,7 @@ export const UseDeferredValue = () => {
   const deferredText = useDeferredValue(text);
 
   return (
-    <Card>
+    <Card notes="Compare typing in the input with concurrent rendering on and off">
       <input
         value={text}
         onChange={(e) => setText(e.currentTarget.value)}

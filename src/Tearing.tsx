@@ -1,6 +1,6 @@
 import { startTransition, useEffect, useState } from "react";
 import { useSyncExternalStore } from "use-sync-external-store/shim";
-import { sleepSync } from "./utils";
+import { Card, sleepSync } from "./utils";
 
 type Listener = () => void;
 
@@ -70,7 +70,7 @@ export const Tearing = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="App">
+    <Card notes="Notice the inconsistent state when toggling the components below and concurrent rendering is on">
       <button
         onClick={() => {
           // We render the SlowComponents using concurrent rendering
@@ -79,7 +79,7 @@ export const Tearing = () => {
           });
         }}
       >
-        Toggle Slow Components
+        Click to Toggle Slow Components
       </button>
       {show && (
         <>
@@ -100,7 +100,7 @@ export const Tearing = () => {
           <SlowComponent />
         </>
       )}
-    </div>
+    </Card>
   );
 };
 
